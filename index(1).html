@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Xantix Labs — AI Engineering Studio</title>
+<meta name="description" content="Xantix Labs builds high-performance web architectures and AI automation systems that capture, qualify, and book your prospects 24/7. Founded by Xavier Ninga."/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080a0f;
+    --bg2: #0d1117;
+    --bg3: #111620;
+    --border: rgba(255,255,255,0.07);
+    --accent: #00e5ff;
+    --accent2: #ff4d6d;
+    --accent3: #b4ff57;
+    --text: #e8eaf0;
+    --muted: #6b7280;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Mono', monospace; font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.4; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(8,10,15,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.08em; color: #fff; text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+  .nav-cta { background: transparent; border: 1px solid var(--accent); color: var(--accent); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+  .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+  section { padding: 120px 0; position: relative; }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 48px; }
+
+  /* HERO */
+  #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; overflow: hidden; position: relative; }
+  #hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px); background-size: 60px 60px; animation: gridShift 20s linear infinite; }
+  #hero::after { content: ''; position: absolute; top: -200px; left: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%); animation: pulseGlow 6s ease-in-out infinite; }
+  @keyframes gridShift { from { transform: translate(0,0); } to { transform: translate(60px,60px); } }
+  @keyframes pulseGlow { 0%,100% { opacity:0.6; transform:scale(1); } 50% { opacity:1; transform:scale(1.1); } }
+  .hero-content { position: relative; z-index: 2; max-width: 860px; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 32px; border: 1px solid rgba(0,229,255,0.25); padding: 6px 14px; animation: fadeUp 0.6s ease both; }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: blink 1.4s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+  .hero-h1 { font-family: 'Syne', sans-serif; font-size: clamp(40px, 6vw, 76px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: #fff; margin-bottom: 28px; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-h1 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+  .hero-sub { font-size: 17px; color: var(--muted); max-width: 620px; margin-bottom: 48px; line-height: 1.8; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+  .btn-primary { background: var(--accent); color: var(--bg); font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 16px 32px; border: none; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; text-decoration: none; display: inline-block; }
+  .btn-primary::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.15); transform: translateX(-100%); transition: transform 0.3s; }
+  .btn-primary:hover::after { transform: translateX(0); }
+  .btn-ghost { background: transparent; color: var(--text); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 16px 32px; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .btn-ghost:hover { border-color: var(--text); }
+  .hero-stats { display: flex; gap: 48px; margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--border); animation: fadeUp 0.6s 0.4s ease both; flex-wrap: wrap; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: #fff; }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+
+  /* LABELS */
+  .label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .label::after { content: ''; flex: 0 0 32px; height: 1px; background: var(--accent); opacity: 0.4; }
+  .section-h2 { font-family: 'Syne', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: #fff; margin-bottom: 20px; }
+  .section-h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+
+  /* PAIN */
+  #pain { background: var(--bg2); }
+  .pain-intro { font-size: 18px; color: var(--muted); max-width: 560px; margin-bottom: 72px; }
+  .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .pain-card { background: var(--bg); padding: 40px; position: relative; overflow: hidden; transition: all 0.3s; }
+  .pain-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
+  .pain-card:hover::before { transform: scaleX(1); }
+  .pain-card:hover { background: var(--bg3); }
+  .pain-num { font-family: 'Syne', sans-serif; font-size: 72px; font-weight: 800; color: rgba(255,255,255,0.04); line-height: 1; margin-bottom: 16px; letter-spacing: -0.04em; }
+  .pain-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+  .pain-body { font-size: 14px; color: var(--muted); line-height: 1.8; }
+  .pain-highlight { color: var(--accent2); font-weight: 500; }
+
+  /* PROTOTYPE */
+  #prototype { background: var(--bg); }
+  .proto-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .chat-window { background: var(--bg2); border: 1px solid var(--border); overflow: hidden; }
+  .chat-topbar { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; background: var(--bg3); }
+  .chat-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .chat-dot.red { background: #ff5f57; } .chat-dot.yellow { background: #febc2e; } .chat-dot.green { background: #28c840; }
+  .chat-title { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-left: 8px; }
+  .chat-online { margin-left: auto; font-size: 10px; color: var(--accent3); display: flex; align-items: center; gap: 6px; }
+  .chat-online::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent3); animation: blink 1.4s ease-in-out infinite; }
+  .chat-body { padding: 24px; min-height: 300px; overflow-y: auto; max-height: 320px; }
+  .chat-msg { display: flex; gap: 12px; margin-bottom: 20px; animation: fadeUp 0.4s ease both; }
+  .chat-avatar { width: 32px; height: 32px; border-radius: 2px; background: var(--bg3); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; border: 1px solid var(--border); }
+  .chat-bubble { background: var(--bg3); border: 1px solid var(--border); padding: 12px 16px; font-size: 13px; line-height: 1.7; color: var(--text); flex: 1; }
+  .chat-msg.user { flex-direction: row-reverse; }
+  .chat-msg.user .chat-bubble { background: rgba(0,229,255,0.06); border-color: rgba(0,229,255,0.15); text-align: right; }
+  .chat-input-row { display: flex; border-top: 1px solid var(--border); }
+  .chat-input { flex: 1; background: transparent; border: none; padding: 16px 20px; font-family: 'DM Mono', monospace; font-size: 13px; color: var(--text); outline: none; }
+  .chat-input::placeholder { color: var(--muted); }
+  .chat-send { background: var(--accent); border: none; padding: 16px 20px; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bg); transition: opacity 0.2s; }
+  .chat-send:hover { opacity: 0.85; }
+  .proto-copy p { color: var(--muted); font-size: 15px; line-height: 1.9; margin-bottom: 32px; }
+  .proto-tag { display: inline-block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 14px; background: rgba(180,255,87,0.07); border: 1px solid rgba(180,255,87,0.2); color: var(--accent3); margin-bottom: 12px; }
+  .typing-dots span { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); margin: 0 2px; }
+  .typing-dots span:nth-child(1) { animation: bounce 1.2s 0s infinite; }
+  .typing-dots span:nth-child(2) { animation: bounce 1.2s 0.2s infinite; }
+  .typing-dots span:nth-child(3) { animation: bounce 1.2s 0.4s infinite; }
+  @keyframes bounce { 0%,80%,100%{transform:translateY(0);opacity:0.4;} 40%{transform:translateY(-5px);opacity:1;} }
+
+  /* SOLUTIONS SLIDER */
+  #solutions { background: var(--bg2); overflow: hidden; }
+  .slider-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
+  .slider-nav { display: flex; gap: 10px; flex-shrink: 0; padding-bottom: 4px; }
+  .slider-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--bg3); border: 1px solid var(--border); color: var(--text); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+  .slider-btn:hover { background: var(--bg); border-color: var(--accent); color: var(--accent); }
+  .slider-btn:disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; }
+  .slider-track-wrap { padding-left: 48px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; user-select: none; }
+  .slider-track-wrap::-webkit-scrollbar { display: none; }
+  .slider-track-wrap.grabbing { cursor: grabbing; }
+  .slider-track { display: flex; gap: 20px; width: max-content; padding-right: 120px; padding-bottom: 4px; align-items: stretch; }
+  .slide-card { background: var(--bg); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; flex-shrink: 0; display: flex; flex-direction: column; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; position: relative; height: 420px; }
+  .slide-card:hover { transform: scale(1.02); border-color: rgba(0,229,255,0.25); box-shadow: 0 8px 40px rgba(0,229,255,0.06); }
+  .slide-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0; transition: opacity 0.3s; }
+  .slide-card:hover::after { opacity: 0.5; }
+  .slide-card.featured { width: 580px; }
+  .slide-card.standard { width: 300px; }
+  .slide-img { width: 100%; height: 220px; flex-shrink: 0; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .slide-card.featured .slide-img { height: 240px; }
+  .slide-img-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
+  .slide-icon { position: relative; z-index: 2; font-size: 56px; filter: drop-shadow(0 0 28px rgba(0,229,255,0.4)); }
+  .slide-card.featured .slide-icon { font-size: 80px; }
+  .bg-arch { background: linear-gradient(145deg, #060d1a 0%, #091828 55%, #0a2244 100%); }
+  .bg-arch::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,229,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.06) 1px, transparent 1px); background-size: 28px 28px; }
+  .bg-lead { background: linear-gradient(145deg, #0e0618 0%, #1a0d28 55%, #220a38 100%); }
+  .bg-sales { background: linear-gradient(145deg, #061210 0%, #0d2018 55%, #103028 100%); }
+  .bg-crm { background: linear-gradient(145deg, #120a06 0%, #241408 55%, #2c1800 100%); }
+  .bg-bespoke { background: linear-gradient(145deg, #0c0c06 0%, #1c1c08 55%, #242400 100%); }
+  .slide-content { padding: 22px 24px 24px; flex: 1; display: flex; flex-direction: column; }
+  .slide-card.featured .slide-content { padding: 24px 32px 28px; }
+  .slide-tag { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .slide-tag::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .slide-title { font-family: 'Syne', sans-serif; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.2; font-size: 16px; }
+  .slide-card.featured .slide-title { font-size: 20px; }
+  .slide-body { font-size: 13px; color: var(--muted); line-height: 1.75; flex: 1; }
+  .slide-arrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-top: 16px; transition: gap 0.2s; cursor: pointer; background: none; border: none; padding: 0; font-family: 'DM Mono', monospace; flex-shrink: 0; }
+  .slide-card:hover .slide-arrow { gap: 10px; }
+
+  /* PILOT */
+  #pilot { background: var(--bg); }
+  .pilot-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .scarcity-box { background: rgba(255,77,109,0.05); border: 1px solid rgba(255,77,109,0.2); padding: 32px; margin-top: 40px; }
+  .scarcity-box .s-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--accent2); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .scarcity-box p { font-size: 14px; color: var(--muted); }
+  .slots { display: flex; gap: 8px; margin-top: 20px; }
+  .slot { width: 40px; height: 8px; background: var(--border); }
+  .slot.taken { background: var(--accent2); }
+  .slot.open { background: rgba(180,255,87,0.3); }
+  .pilot-features { list-style: none; margin-top: 32px; }
+  .pilot-features li { display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--muted); }
+  .pilot-features li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+  .pilot-features li strong { color: var(--text); }
+
+  /* PRICING */
+  #pricing { background: var(--bg2); }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; }
+  .price-card { background: var(--bg); padding: 40px; position: relative; overflow: hidden; transition: transform 0.3s; display: flex; flex-direction: column; }
+  .price-card:hover { transform: translateY(-4px); }
+  .price-card.featured { background: var(--bg3); border: 1px solid rgba(0,229,255,0.2); }
+  .price-card.featured::before { content: 'MOST POPULAR'; position: absolute; top: 20px; right: 20px; font-size: 9px; letter-spacing: 0.2em; color: var(--accent); border: 1px solid rgba(0,229,255,0.3); padding: 4px 10px; }
+  .price-card.authority { background: var(--bg3); border: 1px solid rgba(180,255,87,0.15); }
+  .price-card.authority::before { content: 'FULL STACK'; position: absolute; top: 20px; right: 20px; font-size: 9px; letter-spacing: 0.2em; color: var(--accent3); border: 1px solid rgba(180,255,87,0.3); padding: 4px 10px; }
+  .price-tier { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+  .price-amount { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 8px; }
+  .price-amount sup { font-size: 18px; font-weight: 400; vertical-align: top; margin-top: 8px; display: inline-block; color: var(--muted); }
+  .price-name { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .price-desc { font-size: 13px; color: var(--muted); margin-bottom: 28px; line-height: 1.7; }
+  .price-features { list-style: none; margin-bottom: 32px; flex: 1; }
+  .price-features li { font-size: 13px; color: var(--muted); padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: flex-start; }
+  .price-features li::before { content: '✓'; color: var(--accent3); font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+  .price-objection { margin-top: 64px; background: var(--bg); border-left: 3px solid var(--accent3); padding: 32px 40px; }
+  .price-objection .q { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 20px; color: #fff; margin-bottom: 16px; }
+  .price-objection .a { font-size: 14px; color: var(--muted); line-height: 1.9; }
+
+  /* WHY */
+  #why { background: var(--bg); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; }
+  .why-card { background: var(--bg2); padding: 40px; transition: background 0.3s; }
+  .why-card:hover { background: var(--bg3); }
+  .why-icon { font-size: 28px; margin-bottom: 20px; display: block; }
+  .why-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+  .why-body { font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+  /* FINAL CTA */
+  #final-cta { background: var(--bg2); text-align: center; position: relative; overflow: hidden; }
+  #final-cta::before { content: ''; position: absolute; bottom: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 70%); }
+  #final-cta .container { position: relative; z-index: 2; }
+  .cta-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent2); border: 1px solid rgba(255,77,109,0.25); padding: 6px 16px; margin-bottom: 32px; }
+  .cta-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); animation: blink 1.4s ease-in-out infinite; }
+  .cta-h2 { font-family: 'Syne', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: #fff; margin-bottom: 20px; }
+  .cta-h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+  .cta-sub { font-size: 16px; color: var(--muted); margin-bottom: 48px; }
+  .cta-btn { display: inline-block; background: #fff; color: var(--bg); font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 20px 48px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+  .cta-btn:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0,229,255,0.2); }
+  .cta-note { margin-top: 24px; font-size: 12px; color: var(--muted); letter-spacing: 0.05em; }
+
+  /* FOOTER */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 40px 0; }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; letter-spacing: 0.08em; color: #fff; text-decoration: none; }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-right { display: flex; gap: 24px; }
+  .footer-right a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-right a:hover { color: var(--text); }
+
+  /* HAMBURGER */
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); transition: all 0.3s; }
+  .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(8,10,15,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 24px 48px; z-index: 99; flex-direction: column; gap: 20px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--muted); text-decoration: none; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+  .mobile-menu a:hover { color: var(--text); }
+
+  @media (max-width: 960px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .container { padding: 0 24px; }
+    section { padding: 80px 0; }
+    .pain-grid, .why-grid, .proto-wrap, .pilot-inner { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 28px; flex-wrap: wrap; }
+    .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    .slider-track-wrap { padding-left: 24px; }
+    .slide-card.featured { width: 300px; }
+    .slide-card.standard { width: 240px; }
+    .slide-card { height: 380px; }
+    .slide-img { height: 180px !important; }
+    .mobile-menu { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">XANTIX<span>.</span>LABS</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">See if you qualify</a>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">AI Engineering Studio</div>
+      <h1 class="hero-h1">
+        Never lose a<br>
+        <em>high-intent lead</em><br>
+        to human delay.
+      </h1>
+      <p class="hero-sub">
+        We build high-performance web architectures and AI engineering systems that capture, qualify, and book your prospects — 24/7, in real-time.
+      </p>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn-primary">🎯 See if you qualify</a>
+        <a href="#prototype" class="btn-ghost">🧪 Test our live prototype</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">5<span>min</span></div>
+          <div class="stat-label">Response window</div>
+        </div>
+        <div>
+          <div class="stat-num">10<span>×</span></div>
+          <div class="stat-label">Lead drop-off after delay</div>
+        </div>
+        <div>
+          <div class="stat-num">24<span>/7</span></div>
+          <div class="stat-label">Always-on automation</div>
+        </div>
+        <div>
+          <div class="stat-num">3<span> left</span></div>
+          <div class="stat-label">Pilot slots this month</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section id="pain">
+  <div class="container">
+    <div class="label">Revenue Leak</div>
+    <h2 class="section-h2">Your current response time<br>is your biggest <em>profit leak.</em></h2>
+    <p class="pain-intro">These aren't abstract stats. This is revenue walking out the door — right now, while you sleep.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-num">01</div>
+        <div class="pain-title">The 5-Minute Rule</div>
+        <p class="pain-body">After 5 minutes, a lead is <span class="pain-highlight">10× more likely to go cold</span>. Your competitor who responds in seconds wins the deal before you even wake up.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">02</div>
+        <div class="pain-title">The Midnight Leak</div>
+        <p class="pain-body">Prospects browse at night. If you're asleep, <span class="pain-highlight">they hire the competitor who isn't</span>. You wake up to a missed opportunity — every single morning.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-num">03</div>
+        <div class="pain-title">The Follow-up Failure</div>
+        <p class="pain-body"><span class="pain-highlight">80% of sales require 5+ touches.</span> Most teams stop at 1. Automated follow-up that never forgets is the difference between a close and a ghost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROTOTYPE -->
+<section id="prototype">
+  <div class="container">
+    <div class="proto-wrap">
+      <div class="chat-window">
+        <div class="chat-topbar">
+          <div class="chat-dot red"></div>
+          <div class="chat-dot yellow"></div>
+          <div class="chat-dot green"></div>
+          <span class="chat-title">Core-Logic Engine — Live Instance</span>
+          <span class="chat-online">Online</span>
+        </div>
+        <div class="chat-body" id="chatBody">
+          <div class="chat-msg">
+            <div class="chat-avatar">🤖</div>
+            <div class="chat-bubble">Hi — I'm the Xantix Core-Logic engine. Ask me about our processes, pricing, or how we integrate with your stack.</div>
+          </div>
+          <div class="chat-msg user">
+            <div class="chat-avatar">👤</div>
+            <div class="chat-bubble">How fast do you respond to a new lead?</div>
+          </div>
+          <div class="chat-msg" id="typingMsg">
+            <div class="chat-avatar">🤖</div>
+            <div class="chat-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>
+          </div>
+        </div>
+        <div class="chat-input-row">
+          <input class="chat-input" id="chatInput" type="text" placeholder="Ask anything about our system..." />
+          <button class="chat-send" onclick="sendChat()">Send →</button>
+        </div>
+      </div>
+      <div class="proto-copy">
+        <div class="label">Live Prototype</div>
+        <h2 class="section-h2">Don't take our word for it.<br><em>Challenge our tech.</em></h2>
+        <div class="proto-tag">✓ Not a simulation</div>
+        <p>This is a live instance of our Core-Logic engine — the same AI that responds to your leads in real-time, 24/7, without human delay.</p>
+        <p>Ask it about our processes, our pricing, or how we integrate with your existing stack. It knows everything.</p>
+        <a href="contact.html" class="btn-primary">🎯 See if you qualify</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS SLIDER -->
+<section id="solutions">
+  <div class="container">
+    <div class="slider-header">
+      <div>
+        <div class="label">Technical Solutions</div>
+        <h2 class="section-h2">The full engineering<br><em>ecosystem.</em></h2>
+      </div>
+      <div class="slider-nav">
+        <button class="slider-btn" id="prevBtn" onclick="scrollSlider(-1)" aria-label="Previous">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="slider-btn" id="nextBtn" onclick="scrollSlider(1)" aria-label="Next">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="slider-track-wrap" id="sliderTrack">
+    <div class="slider-track">
+      <div class="slide-card featured">
+        <div class="slide-img"><div class="slide-img-inner bg-arch"><div class="slide-icon">⚡</div></div></div>
+        <div class="slide-content">
+          <div class="slide-tag">01 — Foundation</div>
+          <div class="slide-title">High-Performance Web Architecture</div>
+          <p class="slide-body">We don't build "pretty websites." We code <strong style="color:var(--text)">conversion terminals</strong> — optimized for sub-1s load speeds and engineered to natively host our AI engines.</p>
+          <a href="services.html" class="slide-arrow">Learn more →</a>
+        </div>
+      </div>
+      <div class="slide-card standard">
+        <div class="slide-img"><div class="slide-img-inner bg-lead"><div class="slide-icon">🎯</div></div></div>
+        <div class="slide-content">
+          <div class="slide-tag">02 — Capture</div>
+          <div class="slide-title">24/7 AI Lead Capture</div>
+          <p class="slide-body">Our ingestion engine qualifies high-intent prospects across SMS and Web while you sleep. No tire-kickers reach your calendar.</p>
+          <a href="services.html" class="slide-arrow">Learn more →</a>
+        </div>
+      </div>
+      <div class="slide-card standard">
+        <div class="slide-img"><div class="slide-img-inner bg-sales"><div class="slide-icon">📅</div></div></div>
+        <div class="slide-content">
+          <div class="slide-tag">03 — Close</div>
+          <div class="slide-title">Automated Sales Closer</div>
+          <p class="slide-body">Real-time calendar synchronization. Your agenda fills up without you touching a button. Focus on delivery — not scheduling.</p>
+          <a href="services.html" class="slide-arrow">Learn more →</a>
+        </div>
+      </div>
+      <div class="slide-card standard">
+        <div class="slide-img"><div class="slide-img-inner bg-crm"><div class="slide-icon">🗄️</div></div></div>
+        <div class="slide-content">
+          <div class="slide-tag">04 — Data</div>
+          <div class="slide-title">Seamless CRM Integration</div>
+          <p class="slide-body">Automated data injection into HubSpot or Salesforce. Zero manual entry. Full prospect summaries delivered to your pipeline instantly.</p>
+          <a href="services.html" class="slide-arrow">Learn more →</a>
+        </div>
+      </div>
+      <div class="slide-card standard">
+        <div class="slide-img"><div class="slide-img-inner bg-bespoke"><div class="slide-icon">🔩</div></div></div>
+        <div class="slide-content">
+          <div class="slide-tag">05 — Custom</div>
+          <div class="slide-title">Bespoke Logic Engineering</div>
+          <p class="slide-body">Custom automation for complex business operations. If it's data-driven and repetitive, we can automate it — built to your exact logic.</p>
+          <a href="services.html" class="slide-arrow">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILOT -->
+<section id="pilot">
+  <div class="container">
+    <div class="pilot-inner">
+      <div>
+        <div class="label">Early Access Program</div>
+        <h2 class="section-h2">Deliberately<br><em>limited.</em></h2>
+        <p style="color:var(--muted);font-size:15px;line-height:1.9;margin-top:20px;">We are a lean engineering studio, deliberately limiting our intake to a handful of clients per month. Why? We prioritize technical precision over mass growth.</p>
+        <p style="color:var(--muted);font-size:15px;line-height:1.9;margin-top:16px;">As a pilot client, you get enterprise-grade tech without the enterprise-grade overhead — and an entire ecosystem built around your business, not a template.</p>
+        <div class="scarcity-box">
+          <div class="s-title">⚠ Pilot Slots — May 2025</div>
+          <p>3 pilot spots available this month. 2 have already been claimed. 1 remaining.</p>
+          <div class="slots">
+            <div class="slot taken"></div>
+            <div class="slot taken"></div>
+            <div class="slot open"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <ul class="pilot-features">
+          <li><strong>Enterprise-grade tech</strong> without the enterprise-grade price tag.</li>
+          <li><strong>Direct access</strong> to the builders. No account managers. No layers.</li>
+          <li><strong>Niche-specific</strong> system engineered around your exact conversion flow.</li>
+          <li><strong>30-day optimization</strong> window included in every pilot engagement.</li>
+          <li><strong>Demo before you pay</strong> a single cent. Zero risk entry.</li>
+          <li><strong>Real-time reporting</strong> so you see every lead interaction live.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="label">Execution-Based Pricing</div>
+    <h2 class="section-h2">No bloat. No fluff.<br><em>Just execution.</em></h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Tier 01</div>
+        <div class="price-amount"><sup>$</sup>1,500</div>
+        <div class="price-name">Essential Setup</div>
+        <p class="price-desc">Everything you need to stop losing leads overnight.</p>
+        <ul class="price-features">
+          <li>AI Lead Capture System</li>
+          <li>Calendar Sync + Auto-Booking</li>
+          <li>Email Automation Sequences</li>
+          <li>Lead Qualification Logic</li>
+          <li>Setup + Integration (1 week)</li>
+        </ul>
+        <a href="contact.html" class="btn-ghost">Apply for this tier →</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">Tier 02</div>
+        <div class="price-amount"><sup>$</sup>2,500</div>
+        <div class="price-name">Full Automation</div>
+        <p class="price-desc">The complete AI stack. Built for scale and precision.</p>
+        <ul class="price-features">
+          <li>Everything in Essential Setup</li>
+          <li>CRM Integration (HubSpot / Salesforce)</li>
+          <li>SMS Follow-up Sequences</li>
+          <li>30-Day System Optimization</li>
+          <li>Priority Engineering Access</li>
+          <li>Performance Dashboard</li>
+        </ul>
+        <a href="contact.html" class="btn-primary">Apply for this tier →</a>
+      </div>
+      <div class="price-card authority">
+        <div class="price-tier">Tier 03</div>
+        <div class="price-amount"><sup>$</sup>4,500</div>
+        <div class="price-name">Full-Stack Authority</div>
+        <p class="price-desc">Complete ecosystem re-engineering. For operators who want it all.</p>
+        <ul class="price-features">
+          <li>Complete Web Re-engineering (Conversion-First)</li>
+          <li>Full AI Lead & Sales System</li>
+          <li>Optimized Cloud Infrastructure</li>
+          <li>CRM + SMS + Email Automation</li>
+          <li>Sub-1s Performance Architecture</li>
+          <li>60-Day Priority Support</li>
+        </ul>
+        <a href="contact.html" class="btn-ghost" style="border-color:rgba(180,255,87,0.3);color:var(--accent3);">Apply for this tier →</a>
+      </div>
+    </div>
+    <div class="price-objection">
+      <div class="q">"Why trust you with our website?"</div>
+      <p class="a">A Formula 1 AI engine makes no sense inside a tractor's body. For AI to convert, your site must be a precision machine. We don't bolt automation onto broken infrastructure — we build the entire ecosystem. That's the difference between leads and revenue.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <div class="label">The Edge</div>
+    <h2 class="section-h2">Direct Access. No Overhead.<br><em>No Bullsh*t.</em></h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🔧</span>
+        <div class="why-title">Small Studio, Direct Access</div>
+        <p class="why-body">You talk directly to the builders. No "Account Managers" standing between you and the tech. Your feedback reaches the engineer implementing it — same day.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">💻</span>
+        <div class="why-title">Engineering First</div>
+        <p class="why-body">We come from code, not marketing. If we say it's automated, it actually is. Working systems with verifiable outputs you can track in real time — no smoke and mirrors.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🧪</span>
+        <div class="why-title">Demo Before You Pay</div>
+        <p class="why-body">You test a working system before you pay a single cent. We build the proof first. If it doesn't impress you in the demo, you walk away with nothing lost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+  <div class="container">
+    <div class="cta-badge">Only 1 pilot slot remaining</div>
+    <h2 class="cta-h2">Stop losing leads<br>while you <em>sleep.</em></h2>
+    <p class="cta-sub">We are currently accepting only 3 new projects this month to ensure absolute delivery quality.</p>
+    <a href="contact.html" class="cta-btn">🎯 See if your business qualifies</a>
+    <p class="cta-note">No commitment. No agency pitch. Just a 15-minute qualification call.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">XANTIX<span>.</span>LABS</a>
+      <div class="footer-copy">© 2025 Xantix Labs. Founded by Xavier Ninga.</div>
+      <div class="footer-right">
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+const replies = {
+  default: "Our Core-Logic engine triggers the moment a lead submits a form — response under 3 seconds, 24/7. No human delay, no missed leads while you sleep.",
+  price: "Essential Setup: $1,500 (AI capture + calendar + email). Full Automation: $2,500 (CRM + SMS + optimization). Full-Stack Authority: $4,500 (complete web re-engineering + full AI system + cloud infra). All include a live demo before any commitment.",
+  integrate: "We integrate with HubSpot, Salesforce, GoHighLevel, Calendly, Zapier, and most major CRMs. Tell me your stack and I'll confirm compatibility.",
+  process: "Our process: (1) Qualification call → (2) System design → (3) Live demo build → (4) You approve, we deploy → (5) Optimization window. Typical timeline: 5–10 days from kickoff.",
+  web: "We re-engineer your entire web presence — sub-1s load times, conversion-optimized architecture that natively hosts our AI engines. No bolt-on automation. We build the whole machine.",
+  founder: "Xantix Labs was founded by Xavier Ninga, an automation specialist with deep expertise in AI engineering and conversion system architecture. He works directly with every client — no middlemen."
+};
+function getReply(msg) {
+  const m = msg.toLowerCase();
+  if (m.includes('xavier') || m.includes('ninga') || m.includes('founder') || m.includes('who') || m.includes('team')) return replies.founder;
+  if (m.includes('price') || m.includes('cost') || m.includes('pay') || m.includes('tier') || m.includes('1500') || m.includes('4500')) return replies.price;
+  if (m.includes('integrat') || m.includes('crm') || m.includes('hubspot') || m.includes('salesforce') || m.includes('tool')) return replies.integrate;
+  if (m.includes('process') || m.includes('how long') || m.includes('timeline') || m.includes('step') || m.includes('how does')) return replies.process;
+  if (m.includes('web') || m.includes('site') || m.includes('speed') || m.includes('architecture') || m.includes('build')) return replies.web;
+  return replies.default;
+}
+function sendChat() {
+  const input = document.getElementById('chatInput');
+  const body = document.getElementById('chatBody');
+  const val = input.value.trim();
+  if (!val) return;
+  const typing = document.getElementById('typingMsg');
+  if (typing) typing.remove();
+  const userMsg = document.createElement('div');
+  userMsg.className = 'chat-msg user';
+  userMsg.innerHTML = `<div class="chat-avatar">👤</div><div class="chat-bubble">${val}</div>`;
+  body.appendChild(userMsg);
+  body.scrollTop = body.scrollHeight;
+  input.value = '';
+  const typingEl = document.createElement('div');
+  typingEl.className = 'chat-msg'; typingEl.id = 'typingMsg2';
+  typingEl.innerHTML = `<div class="chat-avatar">🤖</div><div class="chat-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
+  body.appendChild(typingEl);
+  body.scrollTop = body.scrollHeight;
+  setTimeout(() => {
+    const t2 = document.getElementById('typingMsg2');
+    if (t2) t2.remove();
+    const botMsg = document.createElement('div');
+    botMsg.className = 'chat-msg';
+    botMsg.innerHTML = `<div class="chat-avatar">🤖</div><div class="chat-bubble">${getReply(val)}</div>`;
+    body.appendChild(botMsg);
+    body.scrollTop = body.scrollHeight;
+  }, 1400);
+}
+document.getElementById('chatInput').addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
+setTimeout(() => {
+  const t = document.getElementById('typingMsg');
+  if (t) t.querySelector('.chat-bubble').innerHTML = replies.default;
+}, 2000);
+
+/* SLIDER */
+const track = document.getElementById('sliderTrack');
+function getScrollAmt() {
+  const standard = track.querySelector('.slide-card.standard');
+  return standard ? standard.offsetWidth + 20 : 320;
+}
+function scrollSlider(dir) {
+  track.scrollBy({ left: dir * getScrollAmt(), behavior: 'smooth' });
+  setTimeout(updateBtns, 400);
+}
+function updateBtns() {
+  document.getElementById('prevBtn').disabled = track.scrollLeft <= 0;
+  document.getElementById('nextBtn').disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+}
+track.addEventListener('scroll', updateBtns);
+window.addEventListener('resize', updateBtns);
+updateBtns();
+let isDown = false, startX, scrollLeft0;
+track.addEventListener('mousedown', e => { isDown = true; track.classList.add('grabbing'); startX = e.pageX - track.offsetLeft; scrollLeft0 = track.scrollLeft; });
+['mouseleave','mouseup'].forEach(ev => track.addEventListener(ev, () => { isDown = false; track.classList.remove('grabbing'); }));
+track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); track.scrollLeft = scrollLeft0 - (e.pageX - track.offsetLeft - startX); });
+
+/* SCROLL REVEAL */
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }), { threshold: 0.1 });
+document.querySelectorAll('.pain-card,.why-card,.price-card,.pilot-features li,.slide-card').forEach(el => {
+  el.style.opacity='0'; el.style.transform='translateY(20px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>

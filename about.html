@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About — Xantix Labs</title>
+<meta name="description" content="Xantix Labs was founded by Xavier Ninga, an automation specialist building AI-powered revenue systems that work 24/7."/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080a0f; --bg2: #0d1117; --bg3: #111620;
+    --border: rgba(255,255,255,0.07);
+    --accent: #00e5ff; --accent2: #ff4d6d; --accent3: #b4ff57;
+    --text: #e8eaf0; --muted: #6b7280;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Mono', monospace; font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.4; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(8,10,15,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.08em; color: #fff; text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+  .nav-cta { background: transparent; border: 1px solid var(--accent); color: var(--accent); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+  .nav-cta:hover { background: var(--accent); color: var(--bg); }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); transition: all 0.3s; }
+  .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(8,10,15,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 24px 48px; z-index: 99; flex-direction: column; gap: 20px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--muted); text-decoration: none; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 48px; }
+  section { padding: 120px 0; position: relative; }
+  .label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .label::after { content: ''; flex: 0 0 32px; height: 1px; background: var(--accent); opacity: 0.4; }
+  .section-h2 { font-family: 'Syne', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: #fff; margin-bottom: 20px; }
+  .section-h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+
+  /* PAGE HERO */
+  .page-hero { padding-top: 160px; padding-bottom: 80px; background: var(--bg); position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+  .page-hero::after { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 70%); }
+  .page-hero-inner { position: relative; z-index: 2; }
+  .page-hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(0,229,255,0.25); padding: 6px 14px; margin-bottom: 24px; animation: fadeUp 0.6s ease both; }
+  .page-hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: blink 1.4s ease-in-out infinite; }
+  .page-h1 { font-family: 'Syne', sans-serif; font-size: clamp(36px, 5vw, 68px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: #fff; margin-bottom: 24px; animation: fadeUp 0.6s 0.1s ease both; }
+  .page-h1 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+  .page-sub { font-size: 17px; color: var(--muted); max-width: 600px; line-height: 1.8; animation: fadeUp 0.6s 0.2s ease both; }
+
+  /* FOUNDER SECTION */
+  #founder { background: var(--bg2); }
+  .founder-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center; }
+  .founder-visual { position: relative; }
+  .founder-card { background: var(--bg3); border: 1px solid var(--border); padding: 40px; position: relative; overflow: hidden; }
+  .founder-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent3)); }
+  .founder-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, rgba(0,229,255,0.15), rgba(180,255,87,0.15)); border: 2px solid rgba(0,229,255,0.3); display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 24px; }
+  .founder-name { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+  .founder-role { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+  .founder-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--border); }
+  .f-stat-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: #fff; }
+  .f-stat-num span { color: var(--accent); }
+  .f-stat-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+  .founder-copy h3 { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 24px; line-height: 1.2; }
+  .founder-copy p { font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 20px; }
+  .founder-copy p strong { color: var(--text); }
+  .founder-copy blockquote { border-left: 3px solid var(--accent); padding-left: 24px; margin: 32px 0; font-family: 'Instrument Serif', serif; font-style: italic; font-size: 20px; color: var(--text); line-height: 1.6; }
+
+  /* PHILOSOPHY */
+  #philosophy { background: var(--bg); }
+  .phil-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; }
+  .phil-card { background: var(--bg2); padding: 40px; position: relative; overflow: hidden; transition: background 0.3s; }
+  .phil-card:hover { background: var(--bg3); }
+  .phil-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent3)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
+  .phil-card:hover::after { transform: scaleX(1); }
+  .phil-num { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; color: rgba(255,255,255,0.04); line-height: 1; margin-bottom: 12px; }
+  .phil-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+  .phil-body { font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+  /* PROCESS TIMELINE */
+  #process { background: var(--bg2); }
+  .timeline { margin-top: 64px; }
+  .t-step { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 40px 0; border-bottom: 1px solid var(--border); align-items: start; }
+  .t-step:last-child { border-bottom: none; }
+  .t-num { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; color: rgba(0,229,255,0.12); line-height: 1; }
+  .t-content h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+  .t-content p { font-size: 14px; color: var(--muted); line-height: 1.8; max-width: 600px; }
+  .t-badge { display: inline-block; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 12px; background: rgba(0,229,255,0.07); border: 1px solid rgba(0,229,255,0.2); color: var(--accent); margin-bottom: 12px; }
+
+  /* TOOLS */
+  #tools { background: var(--bg); }
+  .tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 48px; }
+  .tool-card { background: var(--bg2); padding: 28px; transition: background 0.3s; }
+  .tool-card:hover { background: var(--bg3); }
+  .tool-icon { font-size: 24px; margin-bottom: 12px; display: block; }
+  .tool-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .tool-cat { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+
+  /* CTA STRIP */
+  .cta-strip { background: var(--bg2); padding: 80px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); text-align: center; }
+  .cta-strip h2 { font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 48px); font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.1; }
+  .cta-strip h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+  .cta-strip p { color: var(--muted); font-size: 15px; margin-bottom: 36px; }
+  .btn-primary { background: var(--accent); color: var(--bg); font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 16px 32px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; position: relative; overflow: hidden; }
+  .btn-primary::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.15); transform: translateX(-100%); transition: transform 0.3s; }
+  .btn-primary:hover::after { transform: translateX(0); }
+
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 40px 0; }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; letter-spacing: 0.08em; color: #fff; text-decoration: none; }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-right { display: flex; gap: 24px; }
+  .footer-right a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-right a:hover { color: var(--text); }
+
+  @media (max-width: 960px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .container { padding: 0 24px; }
+    section { padding: 80px 0; }
+    .founder-grid { grid-template-columns: 1fr; gap: 40px; }
+    .phil-grid { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    .mobile-menu { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">XANTIX<span>.</span>LABS</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">See if you qualify</a>
+  <button class="nav-hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="page-hero-tag">The Studio</div>
+      <h1 class="page-h1">Built by an engineer.<br><em>Obsessed with results.</em></h1>
+      <p class="page-sub">Xantix Labs is not an agency. It's a precision automation studio founded by a specialist who got tired of watching businesses bleed revenue through slow, broken, manual processes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-visual">
+        <div class="founder-card">
+          <div class="founder-avatar">🧠</div>
+          <div class="founder-name">Xavier Ninga</div>
+          <div class="founder-role">Founder & Automation Specialist</div>
+          <p style="font-size:13px;color:var(--muted);line-height:1.8;">Building AI-powered revenue systems that operate 24/7 — so your business never stops working, even when you do.</p>
+          <div class="founder-stats">
+            <div>
+              <div class="f-stat-num">5<span>+</span></div>
+              <div class="f-stat-label">Years in automation</div>
+            </div>
+            <div>
+              <div class="f-stat-num">24<span>/7</span></div>
+              <div class="f-stat-label">Systems uptime</div>
+            </div>
+            <div>
+              <div class="f-stat-num">3<span>s</span></div>
+              <div class="f-stat-label">Lead response time</div>
+            </div>
+            <div>
+              <div class="f-stat-num">10<span>×</span></div>
+              <div class="f-stat-label">Lead qualification lift</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="founder-copy">
+        <h3>Why Xavier built<br>Xantix Labs.</h3>
+        <p>Xavier Ninga is an automation specialist who has spent years engineering systems that eliminate the single biggest revenue leak in modern business: <strong>human response delay</strong>.</p>
+        <p>After working across industries and watching high-intent leads vanish because no one was awake to respond, Xavier built Xantix Labs with a single mandate — <strong>no lead should ever be lost to human latency again.</strong></p>
+        <blockquote>"Most businesses don't have a lead problem. They have a response problem. I build the machine that fixes it permanently."</blockquote>
+        <p>Working directly with every client — no layers, no account managers, no hand-offs — Xavier engineers bespoke AI systems that integrate into your existing stack and start converting within days, not months.</p>
+        <p>Xantix Labs deliberately limits intake to a handful of clients each month to maintain the precision and direct attention every project demands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="container">
+    <div class="label">Core Principles</div>
+    <h2 class="section-h2">Engineering philosophy.<br><em>Non-negotiable.</em></h2>
+    <div class="phil-grid">
+      <div class="phil-card">
+        <div class="phil-num">01</div>
+        <div class="phil-title">Systems over hustle.</div>
+        <p class="phil-body">Hustle doesn't scale. Engineered systems do. Every solution Xavier builds runs autonomously — no human babysitting required once deployed and optimized.</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-num">02</div>
+        <div class="phil-title">Proof before payment.</div>
+        <p class="phil-body">You see a live, working demo of your system before you pay a single cent. There are no promises here — only verifiable, running tech that you can stress-test yourself.</p>
+      </div>
+      <div class="phil-card">
+        <div class="phil-num">03</div>
+        <div class="phil-title">Architecture before automation.</div>
+        <p class="phil-body">You cannot bolt a Formula 1 engine onto a broken chassis. Every engagement starts with getting the foundation right — fast, conversion-optimized infrastructure that can actually carry the load.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="label">How We Work</div>
+    <h2 class="section-h2">From qualification to<br><em>go-live in 5–10 days.</em></h2>
+    <div class="timeline">
+      <div class="t-step">
+        <div class="t-num">01</div>
+        <div class="t-content">
+          <div class="t-badge">Day 0</div>
+          <h3>Qualification Call</h3>
+          <p>A direct 15-minute call with Xavier. No pitch decks. No sales tactics. We determine whether your business is the right fit for what we build, and whether we're the right fit for your goals.</p>
+        </div>
+      </div>
+      <div class="t-step">
+        <div class="t-num">02</div>
+        <div class="t-content">
+          <div class="t-badge">Day 1–2</div>
+          <h3>System Design</h3>
+          <p>We map your exact conversion flow — from lead entry point to booked call or sale. Every touchpoint, every trigger, every integration is blueprinted before a single line of code is written.</p>
+        </div>
+      </div>
+      <div class="t-step">
+        <div class="t-num">03</div>
+        <div class="t-content">
+          <div class="t-badge">Day 3–7</div>
+          <h3>Live Demo Build</h3>
+          <p>We build a fully functional demo of your system. You interact with it. You test it. You try to break it. Only when you're satisfied does the project move forward — and only then do you pay.</p>
+        </div>
+      </div>
+      <div class="t-step">
+        <div class="t-num">04</div>
+        <div class="t-content">
+          <div class="t-badge">Day 7–10</div>
+          <h3>Deploy & Integrate</h3>
+          <p>Your approved system is deployed to production and integrated with your stack — CRM, calendar, SMS, email, or custom endpoints. We handle the entire technical lift.</p>
+        </div>
+      </div>
+      <div class="t-step">
+        <div class="t-num">05</div>
+        <div class="t-content">
+          <div class="t-badge">Day 10–40</div>
+          <h3>Optimization Window</h3>
+          <p>Every engagement includes a 30-day (or 60-day for Tier 03) optimization window. We monitor performance, refine response logic, and tune the system until conversion rates stabilize at peak output.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="container">
+    <div class="label">Tech Stack</div>
+    <h2 class="section-h2">Tools Xavier<br><em>actually uses.</em></h2>
+    <div class="tools-grid">
+      <div class="tool-card"><span class="tool-icon">🤖</span><div class="tool-name">OpenAI / Anthropic</div><div class="tool-cat">AI Inference</div></div>
+      <div class="tool-card"><span class="tool-icon">⚡</span><div class="tool-name">Make / n8n</div><div class="tool-cat">Workflow Automation</div></div>
+      <div class="tool-card"><span class="tool-icon">📊</span><div class="tool-name">HubSpot / Salesforce</div><div class="tool-cat">CRM Integration</div></div>
+      <div class="tool-card"><span class="tool-icon">📅</span><div class="tool-name">Calendly / Cal.com</div><div class="tool-cat">Calendar Automation</div></div>
+      <div class="tool-card"><span class="tool-icon">💬</span><div class="tool-name">Twilio / SMS APIs</div><div class="tool-cat">Messaging Layer</div></div>
+      <div class="tool-card"><span class="tool-icon">🗄️</span><div class="tool-name">Airtable / Supabase</div><div class="tool-cat">Data Layer</div></div>
+      <div class="tool-card"><span class="tool-icon">☁️</span><div class="tool-name">Vercel / AWS</div><div class="tool-cat">Cloud Infrastructure</div></div>
+      <div class="tool-card"><span class="tool-icon">🔗</span><div class="tool-name">Zapier / GoHighLevel</div><div class="tool-cat">Stack Connectors</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="container">
+    <h2>Ready to meet <em>Xavier</em>?</h2>
+    <p>A 15-minute qualification call. No pitch. No commitment. Just an honest conversation about whether we can help.</p>
+    <a href="contact.html" class="btn-primary">🎯 Book a qualification call</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">XANTIX<span>.</span>LABS</a>
+      <div class="footer-copy">© 2025 Xantix Labs. Founded by Xavier Ninga.</div>
+      <div class="footer-right">
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('mobileMenu') && void 0;
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }), { threshold: 0.1 });
+document.querySelectorAll('.phil-card,.t-step,.tool-card,.founder-card').forEach(el => {
+  el.style.opacity='0'; el.style.transform='translateY(20px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>

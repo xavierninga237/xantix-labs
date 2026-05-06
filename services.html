@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Services — Xantix Labs</title>
+<meta name="description" content="Xantix Labs AI automation services: Lead Capture, Sales Closers, CRM Integration, Web Architecture, and Bespoke Logic Engineering."/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080a0f; --bg2: #0d1117; --bg3: #111620;
+    --border: rgba(255,255,255,0.07);
+    --accent: #00e5ff; --accent2: #ff4d6d; --accent3: #b4ff57;
+    --text: #e8eaf0; --muted: #6b7280;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Mono', monospace; font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.4; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(8,10,15,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.08em; color: #fff; text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+  .nav-cta { background: transparent; border: 1px solid var(--accent); color: var(--accent); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+  .nav-cta:hover { background: var(--accent); color: var(--bg); }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); }
+  .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(8,10,15,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 24px; z-index: 99; flex-direction: column; gap: 20px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--muted); text-decoration: none; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 48px; }
+  section { padding: 120px 0; position: relative; }
+  .label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .label::after { content: ''; flex: 0 0 32px; height: 1px; background: var(--accent); opacity: 0.4; }
+  .section-h2 { font-family: 'Syne', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: #fff; margin-bottom: 20px; }
+  .section-h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+
+  /* PAGE HERO */
+  .page-hero { padding-top: 160px; padding-bottom: 80px; background: var(--bg); position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+  .page-hero::after { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(180,255,87,0.05) 0%, transparent 70%); }
+  .page-hero-inner { position: relative; z-index: 2; }
+  .page-hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent3); border: 1px solid rgba(180,255,87,0.25); padding: 6px 14px; margin-bottom: 24px; animation: fadeUp 0.6s ease both; }
+  .page-hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent3); animation: blink 1.4s ease-in-out infinite; }
+  .page-h1 { font-family: 'Syne', sans-serif; font-size: clamp(36px, 5vw, 68px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: #fff; margin-bottom: 24px; animation: fadeUp 0.6s 0.1s ease both; }
+  .page-h1 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+  .page-sub { font-size: 17px; color: var(--muted); max-width: 600px; line-height: 1.8; animation: fadeUp 0.6s 0.2s ease both; }
+
+  /* SERVICE BLOCKS */
+  #services { background: var(--bg2); }
+  .service-block { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; padding: 64px 0; border-bottom: 1px solid var(--border); align-items: center; }
+  .service-block:last-child { border-bottom: none; }
+  .service-block.reverse { direction: rtl; }
+  .service-block.reverse > * { direction: ltr; }
+  .svc-visual { background: var(--bg3); border: 1px solid var(--border); padding: 48px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; position: relative; overflow: hidden; }
+  .svc-visual::before { content: ''; position: absolute; inset: 0; opacity: 0.06; }
+  .svc-visual.v1::before { background: linear-gradient(135deg, var(--accent), transparent); }
+  .svc-visual.v2::before { background: linear-gradient(135deg, #a855f7, transparent); }
+  .svc-visual.v3::before { background: linear-gradient(135deg, var(--accent3), transparent); }
+  .svc-visual.v4::before { background: linear-gradient(135deg, var(--accent2), transparent); }
+  .svc-visual.v5::before { background: linear-gradient(135deg, #fb923c, transparent); }
+  .svc-icon { font-size: 64px; margin-bottom: 16px; filter: drop-shadow(0 0 32px rgba(0,229,255,0.3)); }
+  .svc-tag-visual { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .svc-num { font-family: 'Syne', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+  .svc-title { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.15; }
+  .svc-body { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 28px; }
+  .svc-body strong { color: var(--text); }
+  .svc-features { list-style: none; margin-bottom: 28px; }
+  .svc-features li { font-size: 13px; color: var(--muted); padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: flex-start; }
+  .svc-features li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+  .svc-features li strong { color: var(--text); }
+
+  /* COMPARE TABLE */
+  #compare { background: var(--bg); }
+  .compare-table { margin-top: 64px; width: 100%; border-collapse: collapse; }
+  .compare-table th { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); padding: 16px 20px; border-bottom: 1px solid var(--border); text-align: left; font-weight: 400; }
+  .compare-table th:not(:first-child) { text-align: center; }
+  .compare-table td { padding: 16px 20px; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+  .compare-table td:not(:first-child) { text-align: center; }
+  .compare-table td:first-child { color: var(--text); }
+  .compare-table .tier-head { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: #fff; }
+  .compare-table .tier-head.featured { color: var(--accent); }
+  .compare-table .tier-head.authority { color: var(--accent3); }
+  .check { color: var(--accent3); font-size: 14px; }
+  .dash { color: rgba(255,255,255,0.15); }
+  .partial { color: var(--accent); font-size: 12px; }
+
+  /* PRICING SUMMARY */
+  #pricing { background: var(--bg2); }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; }
+  .price-card { background: var(--bg); padding: 40px; position: relative; overflow: hidden; transition: transform 0.3s; display: flex; flex-direction: column; }
+  .price-card:hover { transform: translateY(-4px); }
+  .price-card.featured { background: var(--bg3); border: 1px solid rgba(0,229,255,0.2); }
+  .price-card.featured::before { content: 'MOST POPULAR'; position: absolute; top: 20px; right: 20px; font-size: 9px; letter-spacing: 0.2em; color: var(--accent); border: 1px solid rgba(0,229,255,0.3); padding: 4px 10px; }
+  .price-card.authority { background: var(--bg3); border: 1px solid rgba(180,255,87,0.15); }
+  .price-card.authority::before { content: 'FULL STACK'; position: absolute; top: 20px; right: 20px; font-size: 9px; letter-spacing: 0.2em; color: var(--accent3); border: 1px solid rgba(180,255,87,0.3); padding: 4px 10px; }
+  .price-tier { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+  .price-amount { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 8px; }
+  .price-amount sup { font-size: 18px; font-weight: 400; vertical-align: top; margin-top: 8px; display: inline-block; color: var(--muted); }
+  .price-name { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .price-desc { font-size: 13px; color: var(--muted); margin-bottom: 28px; line-height: 1.7; }
+  .price-features { list-style: none; margin-bottom: 32px; flex: 1; }
+  .price-features li { font-size: 13px; color: var(--muted); padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: flex-start; }
+  .price-features li::before { content: '✓'; color: var(--accent3); font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+  .btn-primary { background: var(--accent); color: var(--bg); font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 16px 32px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; position: relative; overflow: hidden; }
+  .btn-primary::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.15); transform: translateX(-100%); transition: transform 0.3s; }
+  .btn-primary:hover::after { transform: translateX(0); }
+  .btn-ghost { background: transparent; color: var(--text); font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 16px 32px; border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .btn-ghost:hover { border-color: var(--text); }
+
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 40px 0; }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; letter-spacing: 0.08em; color: #fff; text-decoration: none; }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-right { display: flex; gap: 24px; }
+  .footer-right a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-right a:hover { color: var(--text); }
+
+  @media (max-width: 960px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .container { padding: 0 24px; }
+    section { padding: 80px 0; }
+    .service-block { grid-template-columns: 1fr; gap: 32px; direction: ltr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    .compare-table { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">XANTIX<span>.</span>LABS</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">See if you qualify</a>
+  <button class="nav-hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="page-hero-tag">The Ecosystem</div>
+      <h1 class="page-h1">Five systems.<br><em>One revenue machine.</em></h1>
+      <p class="page-sub">Each service is engineered to interlock with the others. You can start with one — or deploy the full stack from day one. Either way, nothing leaks.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+
+    <div class="service-block">
+      <div class="svc-visual v1">
+        <div class="svc-icon">⚡</div>
+        <div class="svc-tag-visual">Foundation Layer</div>
+      </div>
+      <div>
+        <div class="svc-num">Service 01</div>
+        <div class="svc-title">High-Performance<br>Web Architecture</div>
+        <p class="svc-body">Most websites are bloated, slow, and structurally incompatible with real automation. Xavier builds <strong>conversion terminals</strong> — lean, sub-1 second web infrastructure engineered from the ground up to natively host every AI system in the Xantix stack.</p>
+        <ul class="svc-features">
+          <li><strong>Sub-1s load time</strong> architecture with performance-first code</li>
+          <li><strong>Conversion-optimized</strong> layout and copy architecture</li>
+          <li><strong>Native AI hosting</strong> — no bolt-on integrations breaking your stack</li>
+          <li><strong>Mobile-first, accessible</strong> across all devices and browsers</li>
+          <li><strong>Cloud-deployed</strong> with scalable infrastructure</li>
+        </ul>
+        <a href="contact.html" class="btn-ghost">Get this service →</a>
+      </div>
+    </div>
+
+    <div class="service-block reverse">
+      <div class="svc-visual v2">
+        <div class="svc-icon">🎯</div>
+        <div class="svc-tag-visual">Capture Layer</div>
+      </div>
+      <div>
+        <div class="svc-num">Service 02</div>
+        <div class="svc-title">24/7 AI<br>Lead Capture</div>
+        <p class="svc-body">Your website receives traffic at all hours. Our AI ingestion engine is always awake — qualifying inbound leads across SMS and web in real-time, responding within 3 seconds, filtering out tire-kickers before they ever reach your calendar.</p>
+        <ul class="svc-features">
+          <li><strong>Sub-3 second response</strong> to every inbound lead, 24/7</li>
+          <li><strong>Multi-channel capture</strong> — web forms, SMS, chat widgets</li>
+          <li><strong>Qualification logic</strong> that filters by budget, intent, and fit</li>
+          <li><strong>Instant lead scoring</strong> so you know who to call first</li>
+          <li><strong>Custom conversation flows</strong> built around your offer</li>
+        </ul>
+        <a href="contact.html" class="btn-ghost">Get this service →</a>
+      </div>
+    </div>
+
+    <div class="service-block">
+      <div class="svc-visual v3">
+        <div class="svc-icon">📅</div>
+        <div class="svc-tag-visual">Conversion Layer</div>
+      </div>
+      <div>
+        <div class="svc-num">Service 03</div>
+        <div class="svc-title">Automated<br>Sales Closer</div>
+        <p class="svc-body">Once a lead is qualified, the system closes the loop automatically — syncing with your calendar and booking the call without any human intervention. Your agenda fills up while you focus on delivery.</p>
+        <ul class="svc-features">
+          <li><strong>Real-time calendar sync</strong> with Calendly, Cal.com, and Google Calendar</li>
+          <li><strong>Automated confirmation</strong> and reminder sequences</li>
+          <li><strong>Rescheduling logic</strong> that handles no-shows automatically</li>
+          <li><strong>Pre-call qualification</strong> delivered to your inbox before every meeting</li>
+          <li><strong>SMS + email</strong> reminder sequences to reduce no-show rates</li>
+        </ul>
+        <a href="contact.html" class="btn-ghost">Get this service →</a>
+      </div>
+    </div>
+
+    <div class="service-block reverse">
+      <div class="svc-visual v4">
+        <div class="svc-icon">🗄️</div>
+        <div class="svc-tag-visual">Data Layer</div>
+      </div>
+      <div>
+        <div class="svc-num">Service 04</div>
+        <div class="svc-title">Seamless<br>CRM Integration</div>
+        <p class="svc-body">Every lead interaction is automatically logged, scored, and injected into your CRM with a full conversation summary. Zero manual data entry. Zero missed context. Your pipeline stays clean without anyone touching it.</p>
+        <ul class="svc-features">
+          <li><strong>HubSpot & Salesforce</strong> native integration</li>
+          <li><strong>GoHighLevel</strong> and Airtable supported</li>
+          <li><strong>Automated contact creation</strong> with full conversation transcript</li>
+          <li><strong>Deal stage automation</strong> based on lead qualification score</li>
+          <li><strong>Real-time dashboards</strong> so you see every interaction live</li>
+        </ul>
+        <a href="contact.html" class="btn-ghost">Get this service →</a>
+      </div>
+    </div>
+
+    <div class="service-block">
+      <div class="svc-visual v5">
+        <div class="svc-icon">🔩</div>
+        <div class="svc-tag-visual">Custom Layer</div>
+      </div>
+      <div>
+        <div class="svc-num">Service 05</div>
+        <div class="svc-title">Bespoke Logic<br>Engineering</div>
+        <p class="svc-body">Some businesses have workflows that don't fit a template. If your operation has unique logic — multi-step qualification, industry-specific scoring, complex CRM pipelines — Xavier engineers it from scratch, precisely tailored to how your business actually works.</p>
+        <ul class="svc-features">
+          <li><strong>Custom automation flows</strong> built around your exact process</li>
+          <li><strong>API integrations</strong> with any tool in your stack</li>
+          <li><strong>Industry-specific AI logic</strong> trained on your product and offer</li>
+          <li><strong>Webhook & data pipeline</strong> engineering for complex workflows</li>
+          <li><strong>Ongoing logic refinement</strong> during the optimization window</li>
+        </ul>
+        <a href="contact.html" class="btn-ghost">Get this service →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section id="compare">
+  <div class="container">
+    <div class="label">Feature Matrix</div>
+    <h2 class="section-h2">What's included<br><em>in each tier.</em></h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th><span class="tier-head">Essential<br>$1,500</span></th>
+          <th><span class="tier-head featured">Full Auto<br>$2,500</span></th>
+          <th><span class="tier-head authority">Full Stack<br>$4,500</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>AI Lead Capture System</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Calendar Sync + Auto-Booking</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Email Automation Sequences</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Lead Qualification Logic</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>CRM Integration (HubSpot/Salesforce)</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>SMS Follow-up Sequences</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Performance Dashboard</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Web Re-engineering (Conversion-First)</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Cloud Infrastructure Optimization</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Optimization Window</td><td><span class="partial">— </span></td><td><span class="partial">30 days</span></td><td><span class="check">60 days</span></td></tr>
+        <tr><td>Priority Engineering Access</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        <tr><td>Setup Timeline</td><td><span class="partial">1 week</span></td><td><span class="partial">1–2 weeks</span></td><td><span class="partial">2–3 weeks</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <div class="label">Execution-Based Pricing</div>
+    <h2 class="section-h2">No bloat. No fluff.<br><em>Just execution.</em></h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Tier 01</div>
+        <div class="price-amount"><sup>$</sup>1,500</div>
+        <div class="price-name">Essential Setup</div>
+        <p class="price-desc">Everything you need to stop losing leads overnight.</p>
+        <ul class="price-features">
+          <li>AI Lead Capture System</li>
+          <li>Calendar Sync + Auto-Booking</li>
+          <li>Email Automation Sequences</li>
+          <li>Lead Qualification Logic</li>
+          <li>Setup + Integration (1 week)</li>
+        </ul>
+        <a href="contact.html" class="btn-ghost">Apply for this tier →</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">Tier 02</div>
+        <div class="price-amount"><sup>$</sup>2,500</div>
+        <div class="price-name">Full Automation</div>
+        <p class="price-desc">The complete AI stack. Built for scale and precision.</p>
+        <ul class="price-features">
+          <li>Everything in Essential Setup</li>
+          <li>CRM Integration (HubSpot / Salesforce)</li>
+          <li>SMS Follow-up Sequences</li>
+          <li>30-Day System Optimization</li>
+          <li>Priority Engineering Access</li>
+          <li>Performance Dashboard</li>
+        </ul>
+        <a href="contact.html" class="btn-primary">Apply for this tier →</a>
+      </div>
+      <div class="price-card authority">
+        <div class="price-tier">Tier 03</div>
+        <div class="price-amount"><sup>$</sup>4,500</div>
+        <div class="price-name">Full-Stack Authority</div>
+        <p class="price-desc">Complete ecosystem re-engineering. For operators who want it all.</p>
+        <ul class="price-features">
+          <li>Complete Web Re-engineering</li>
+          <li>Full AI Lead & Sales System</li>
+          <li>Optimized Cloud Infrastructure</li>
+          <li>CRM + SMS + Email Automation</li>
+          <li>Sub-1s Performance Architecture</li>
+          <li>60-Day Priority Support</li>
+        </ul>
+        <a href="contact.html" class="btn-ghost" style="border-color:rgba(180,255,87,0.3);color:var(--accent3);">Apply for this tier →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">XANTIX<span>.</span>LABS</a>
+      <div class="footer-copy">© 2025 Xantix Labs. Founded by Xavier Ninga.</div>
+      <div class="footer-right">
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }), { threshold: 0.08 });
+document.querySelectorAll('.service-block,.price-card,.svc-features li').forEach(el => {
+  el.style.opacity='0'; el.style.transform='translateY(20px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact — Xantix Labs</title>
+<meta name="description" content="Apply for a pilot slot at Xantix Labs. A 15-minute qualification call with Xavier Ninga. No commitment. No agency pitch."/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #080a0f; --bg2: #0d1117; --bg3: #111620;
+    --border: rgba(255,255,255,0.07);
+    --accent: #00e5ff; --accent2: #ff4d6d; --accent3: #b4ff57;
+    --text: #e8eaf0; --muted: #6b7280;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Mono', monospace; font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.4; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(8,10,15,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.08em; color: #fff; text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+  .nav-cta { background: transparent; border: 1px solid var(--accent); color: var(--accent); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+  .nav-cta:hover { background: var(--accent); color: var(--bg); }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text); }
+  .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(8,10,15,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 24px; z-index: 99; flex-direction: column; gap: 20px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--muted); text-decoration: none; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 48px; }
+  section { padding: 120px 0; position: relative; }
+  .label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .label::after { content: ''; flex: 0 0 32px; height: 1px; background: var(--accent); opacity: 0.4; }
+  .section-h2 { font-family: 'Syne', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: #fff; margin-bottom: 20px; }
+  .section-h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+
+  /* PAGE HERO */
+  .page-hero { padding-top: 160px; padding-bottom: 80px; background: var(--bg); position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+  .page-hero::after { content: ''; position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(circle, rgba(0,229,255,0.07) 0%, transparent 70%); }
+  .page-hero-inner { position: relative; z-index: 2; text-align: center; max-width: 700px; margin: 0 auto; }
+  .page-hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent2); border: 1px solid rgba(255,77,109,0.25); padding: 6px 14px; margin-bottom: 24px; animation: fadeUp 0.6s ease both; }
+  .page-hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); animation: blink 1.4s ease-in-out infinite; }
+  .page-h1 { font-family: 'Syne', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: #fff; margin-bottom: 24px; animation: fadeUp 0.6s 0.1s ease both; }
+  .page-h1 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); }
+  .page-sub { font-size: 16px; color: var(--muted); line-height: 1.8; animation: fadeUp 0.6s 0.2s ease both; }
+
+  /* FORM SECTION */
+  #qualify { background: var(--bg2); }
+  .qualify-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 64px; align-items: start; }
+  .qualify-info h3 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 20px; }
+  .qualify-info p { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 20px; }
+  .q-checklist { list-style: none; margin-top: 32px; }
+  .q-checklist li { display: flex; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+  .q-checklist li::before { content: '✓'; color: var(--accent3); flex-shrink: 0; }
+  .q-checklist li strong { color: var(--text); }
+  .scarcity-inline { display: flex; align-items: center; gap: 12px; margin-top: 32px; padding: 20px 24px; background: rgba(255,77,109,0.05); border: 1px solid rgba(255,77,109,0.2); }
+  .scarcity-inline .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent2); animation: blink 1.4s ease-in-out infinite; flex-shrink: 0; }
+  .scarcity-inline p { font-size: 13px; color: var(--muted); }
+  .scarcity-inline p strong { color: var(--accent2); }
+
+  /* FORM */
+  .qualify-form { background: var(--bg3); border: 1px solid var(--border); padding: 48px; position: relative; overflow: hidden; }
+  .qualify-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent3)); }
+  .form-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 32px; }
+  .form-group { margin-bottom: 24px; }
+  .form-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; display: block; }
+  .form-input, .form-select, .form-textarea {
+    width: 100%; background: var(--bg2); border: 1px solid var(--border); color: var(--text);
+    font-family: 'DM Mono', monospace; font-size: 13px; padding: 14px 16px;
+    outline: none; transition: border-color 0.2s; appearance: none;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: rgba(0,229,255,0.4); }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+  .form-textarea { min-height: 100px; resize: vertical; }
+  .form-select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+  .form-select option { background: var(--bg2); color: var(--text); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-submit { width: 100%; background: var(--accent); color: var(--bg); font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 18px 32px; border: none; cursor: pointer; transition: all 0.2s; margin-top: 8px; }
+  .form-submit:hover { background: #00c8e0; transform: translateY(-1px); box-shadow: 0 12px 32px rgba(0,229,255,0.2); }
+  .form-note { font-size: 11px; color: var(--muted); margin-top: 16px; text-align: center; letter-spacing: 0.05em; }
+  .form-success { display: none; text-align: center; padding: 40px; }
+  .form-success.show { display: block; }
+  .form-success .s-icon { font-size: 48px; margin-bottom: 16px; }
+  .form-success h3 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 12px; }
+  .form-success p { font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+  /* FAQ */
+  #faq { background: var(--bg); }
+  .faq-list { margin-top: 48px; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; cursor: pointer; gap: 20px; }
+  .faq-q-text { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: #fff; }
+  .faq-chevron { color: var(--accent); font-size: 18px; transition: transform 0.3s; flex-shrink: 0; }
+  .faq-item.open .faq-chevron { transform: rotate(45deg); }
+  .faq-a { font-size: 14px; color: var(--muted); line-height: 1.9; padding-bottom: 24px; display: none; max-width: 700px; }
+  .faq-item.open .faq-a { display: block; }
+
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 40px 0; }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+  .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px; letter-spacing: 0.08em; color: #fff; text-decoration: none; }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: 12px; color: var(--muted); }
+  .footer-right { display: flex; gap: 24px; }
+  .footer-right a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-right a:hover { color: var(--text); }
+
+  @media (max-width: 960px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .container { padding: 0 24px; }
+    section { padding: 80px 0; }
+    .qualify-grid { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+    .qualify-form { padding: 28px; }
+    .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">XANTIX<span>.</span>LABS</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">See if you qualify</a>
+  <button class="nav-hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="page-hero-tag">Only 1 pilot slot remaining</div>
+      <h1 class="page-h1">See if your business<br><em>qualifies.</em></h1>
+      <p class="page-sub">A 15-minute call with Xavier. No commitment. No agency pitch. Just an honest conversation about whether we can help — and if so, what that looks like.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUALIFY -->
+<section id="qualify">
+  <div class="container">
+    <div class="qualify-grid">
+      <div class="qualify-info">
+        <div class="label">The Process</div>
+        <h3>What happens after<br>you apply.</h3>
+        <p>Xavier personally reviews every application. If your business is a fit, you'll receive a calendar link within 24 hours to book your qualification call.</p>
+        <p>The call is 15 minutes. Direct. No sales deck. Xavier asks about your current lead flow, your bottlenecks, and your goals — and tells you honestly whether Xantix Labs can help.</p>
+        <ul class="q-checklist">
+          <li><strong>Response within 24h</strong> — every application is personally reviewed</li>
+          <li><strong>No-BS assessment</strong> — we decline projects that aren't the right fit</li>
+          <li><strong>Demo before you pay</strong> — see it running before any commitment</li>
+          <li><strong>Direct access to Xavier</strong> — no middlemen or account managers</li>
+          <li><strong>5–10 day timeline</strong> — from kickoff to live deployment</li>
+        </ul>
+        <div class="scarcity-inline">
+          <div class="dot"></div>
+          <p><strong>Only 1 pilot slot remaining</strong> this month. We cap intake to maintain engineering quality on every project.</p>
+        </div>
+      </div>
+
+      <div class="qualify-form" id="qualifyForm">
+        <div class="form-title">Qualification Application</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input class="form-input" type="text" id="fname" placeholder="Xavier" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input class="form-input" type="text" id="lname" placeholder="Ninga" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Business Email</label>
+          <input class="form-input" type="email" id="email" placeholder="you@yourcompany.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Company / Business Name</label>
+          <input class="form-input" type="text" id="company" placeholder="Your company name" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Current Monthly Revenue</label>
+          <select class="form-select" id="revenue">
+            <option value="">Select range...</option>
+            <option>Under $5k/month</option>
+            <option>$5k – $20k/month</option>
+            <option>$20k – $50k/month</option>
+            <option>$50k – $100k/month</option>
+            <option>$100k+/month</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Which tier interests you?</label>
+          <select class="form-select" id="tier">
+            <option value="">Select tier...</option>
+            <option>Tier 01 — Essential Setup ($1,500)</option>
+            <option>Tier 02 — Full Automation ($2,500)</option>
+            <option>Tier 03 — Full-Stack Authority ($4,500)</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Biggest lead/revenue problem right now</label>
+          <textarea class="form-textarea" id="problem" placeholder="Describe what's breaking in your current lead flow..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">🎯 Submit Application →</button>
+        <p class="form-note">No commitment required. We'll respond within 24 hours.</p>
+      </div>
+
+      <div class="form-success" id="formSuccess" style="background:var(--bg3);border:1px solid var(--border);padding:60px 48px;display:none;grid-column:2;">
+        <div class="s-icon">✅</div>
+        <h3>Application received.</h3>
+        <p>Xavier will personally review your application and respond within 24 hours. If your business is a fit, you'll receive a calendar link to book your qualification call.</p>
+        <p style="margin-top:16px;">In the meantime, learn more about <a href="services.html" style="color:var(--accent);">our services</a> or <a href="about.html" style="color:var(--accent);">meet Xavier</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="label">Common Questions</div>
+    <h2 class="section-h2">Everything you're<br><em>probably wondering.</em></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Do I have to pay before seeing anything?</span>
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-a">No. We build a fully functional live demo of your system before you pay a single cent. You interact with it, test it, and only once you're satisfied does the project move forward — and only then do we invoice.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How long does it take to go live?</span>
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-a">Typically 5–10 days from kickoff to live deployment, depending on the tier and complexity of your stack. Tier 01 is usually live in 5–7 days. Tier 03 can take 2–3 weeks for the full web re-engineering component.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What CRMs and tools do you integrate with?</span>
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-a">HubSpot, Salesforce, GoHighLevel, Airtable, Calendly, Cal.com, Google Calendar, Zapier, Make (Integromat), Twilio for SMS, and most REST API-capable platforms. If you're unsure about your stack, mention it in your application and Xavier will confirm compatibility on the call.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What kind of businesses do you work with?</span>
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-a">We work with service-based businesses where lead response speed and qualification directly impact revenue — agencies, consultants, coaches, SaaS companies, local service businesses with high ticket offers. If you're losing leads to slow response or poor follow-up, we can likely help.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Why is intake so limited?</span>
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-a">Xavier works directly on every project — no outsourcing, no junior devs handling your build. This requires time and focused attention. Limiting intake to 3 clients per month is how we guarantee the engineering precision every client pays for. We'd rather do 3 things exceptionally than 10 things adequately.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What happens after the optimization window ends?</span>
+          <span class="faq-chevron">+</span>
+        </div>
+        <div class="faq-a">Your system runs independently — you own it. If you want ongoing refinement, priority support, or expansion of the system, we offer retainer arrangements for existing clients. But the base system is yours, fully functional, with no recurring fees baked in by default.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">XANTIX<span>.</span>LABS</a>
+      <div class="footer-copy">© 2025 Xantix Labs. Founded by Xavier Ninga.</div>
+      <div class="footer-right">
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function submitForm() {
+  const required = ['fname', 'lname', 'email', 'company'];
+  let valid = true;
+  required.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.style.borderColor = 'rgba(255,77,109,0.5)'; valid = false; }
+    else el.style.borderColor = '';
+  });
+  if (!valid) { alert('Please fill in all required fields.'); return; }
+  document.getElementById('qualifyForm').style.display = 'none';
+  const success = document.getElementById('formSuccess');
+  success.style.display = 'block';
+  success.style.gridColumn = '2';
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } }), { threshold: 0.08 });
+document.querySelectorAll('.q-checklist li,.faq-item').forEach(el => {
+  el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.4s ease, transform 0.4s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
